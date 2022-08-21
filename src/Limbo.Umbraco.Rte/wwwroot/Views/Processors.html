@@ -1,0 +1,14 @@
+﻿<div ng-controller="Limbo.Umbraco.Redirects.ProcessorsController as vm">
+    <div ui-sortable="vm.sortableOptions" ng-model="vm.selectedProcessors">
+        <umb-node-preview ng-repeat="item in vm.selectedProcessors"
+                          icon="item.icon"
+                          name="item.name"
+                          description="item.description"
+                          allow-remove="true"
+                          on-remove="vm.remove($index)">
+        </umb-node-preview>
+    </div>
+    <button type="button" class="umb-node-preview-add" ng-click="vm.add()" aria-hidden="false">
+        <localize key="general_add">Add</localize>
+    </button>
+</div>
