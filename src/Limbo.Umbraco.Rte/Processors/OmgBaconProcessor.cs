@@ -13,7 +13,7 @@ namespace Limbo.Umbraco.Rte.Processors {
 
         public string Description => "Magically converts all text to Bacon Ipsum. Because, why not?";
 
-        public string? Icon => "icon-piggy-bank color-red";
+        public string Icon => "icon-piggy-bank color-red";
 
         public bool PostProcess(IPublishedElement owner, IPublishedPropertyType propertyType, bool preview, HtmlDocument document) {
 

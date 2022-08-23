@@ -2,7 +2,6 @@
 using Umbraco.Cms.Core.Media;
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Security;
-using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Core.Templates;
 using Umbraco.Cms.Infrastructure.Templates;
 
@@ -22,16 +21,14 @@ namespace Limbo.Umbraco.Rte.PropertyEditors {
         internal const string EditorView = "rte";
 
         private readonly IIOHelper _ioHelper;
-        private readonly IEditorConfigurationParser _editorConfigurationParser;
 
-        public RtePropertyEditor(IDataValueEditorFactory dataValueEditorFactory, IBackOfficeSecurityAccessor backOfficeSecurityAccessor, HtmlImageSourceParser imageSourceParser, HtmlLocalLinkParser localLinkParser, RichTextEditorPastedImages pastedImages, IIOHelper ioHelper, IImageUrlGenerator imageUrlGenerator, IHtmlMacroParameterParser macroParameterParser, IEditorConfigurationParser editorConfigurationParser) : base(dataValueEditorFactory, backOfficeSecurityAccessor, imageSourceParser, localLinkParser, pastedImages, ioHelper, imageUrlGenerator, macroParameterParser, editorConfigurationParser) {
+        public RtePropertyEditor(IDataValueEditorFactory dataValueEditorFactory, IBackOfficeSecurityAccessor backOfficeSecurityAccessor, HtmlImageSourceParser imageSourceParser, HtmlLocalLinkParser localLinkParser, RichTextEditorPastedImages pastedImages, IIOHelper ioHelper, IImageUrlGenerator imageUrlGenerator, IHtmlMacroParameterParser macroParameterParser) : base(dataValueEditorFactory, backOfficeSecurityAccessor, imageSourceParser, localLinkParser, pastedImages, ioHelper, imageUrlGenerator, macroParameterParser) {
             _ioHelper = ioHelper;
-            _editorConfigurationParser = editorConfigurationParser;
         }
 
 
         protected override IConfigurationEditor CreateConfigurationEditor() =>
-            new RteConfigurationEditor(_ioHelper, _editorConfigurationParser);
+            new RteConfigurationEditor(_ioHelper);
 
     }
 

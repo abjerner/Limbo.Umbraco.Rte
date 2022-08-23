@@ -21,7 +21,7 @@ namespace Limbo.Umbraco.Rte.Processors {
         /// <summary>
         /// Gets the icon of the processor, if any.
         /// </summary>
-        string? Icon { get; }
+        string Icon { get; }
 
         /// <summary>
         /// Processes the <paramref name="rawHtml"/>.

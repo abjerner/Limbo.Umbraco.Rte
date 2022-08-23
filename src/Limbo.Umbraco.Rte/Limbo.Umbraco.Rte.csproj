@@ -1,16 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <LangVersion>10.0</LangVersion>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <StaticWebAssetBasePath>App_Plugins/$(AssemblyName)</StaticWebAssetBasePath>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup>
-    <VersionPrefix>2.0.0-alpha001</VersionPrefix>
+    <VersionPrefix>1.0.0-alpha001</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Company>Limbo</Company>
     <Authors>Anders Bjerner</Authors>
@@ -33,26 +31,23 @@
   <!-- Include NuGet dependencies -->
   <ItemGroup>
     <PackageReference Include="Skybrud.Essentials" Version="1.1.41" />
-    <PackageReference Include="Umbraco.Cms.Core" Version="10.0.0" />
-    <PackageReference Include="Umbraco.Cms.Web.Website" Version="10.0.0" />
-    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="10.0.0" />
+    <PackageReference Include="Umbraco.Cms.Core" Version="9.4.0" />
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="9.4.0" />
+    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="9.4.0" />
   </ItemGroup>
 
   <!-- Include backoffice assets -->
   <ItemGroup>
-    <Content Remove="wwwroot\**\*" />
-    <Content Include="wwwroot\**\*.css" />
-    <Content Include="wwwroot\**\*.html" />
-    <Content Include="wwwroot\**\*.js" />
-    <Content Include="wwwroot\Lang\*.xml" />
+    <Content Remove="App_Plugins\Limbo.Umbraco.Rte\**\*" />
+    <Content Include="App_Plugins\Limbo.Umbraco.Rte\**\*.css" />
+    <Content Include="App_Plugins\Limbo.Umbraco.Rte\**\*.html" />
+    <Content Include="App_Plugins\Limbo.Umbraco.Rte\**\*.js" />
+    <Content Include="App_Plugins\Limbo.Umbraco.Rte\Lang\*.xml" />
   </ItemGroup>
 
   <!-- Include package icon for NuGet -->
   <ItemGroup>
     <Content Include="../build/Limbo.png" Pack="true" PackagePath="\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="wwwroot\Views\" />
   </ItemGroup>
 
   <!-- Generate XML documentation -->

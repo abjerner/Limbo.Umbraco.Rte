@@ -20,7 +20,7 @@ namespace Limbo.Umbraco.Rte.Processors {
             _lookup = new Dictionary<string, IRteHtmlProcessor>(StringComparer.OrdinalIgnoreCase);
 
             foreach (IRteHtmlProcessor item in this) {
-                string? typeName = item.GetType().AssemblyQualifiedName;
+                string typeName = item.GetType().AssemblyQualifiedName;
                 if (typeName != null && _lookup.ContainsKey(typeName) == false) {
                     _lookup.Add(typeName, item);
                 }
@@ -34,8 +34,8 @@ namespace Limbo.Umbraco.Rte.Processors {
         /// <typeparam name="TProcessor">The type of the processor.</typeparam>
         /// <param name="result">When this method returns, holds the <typeparamref name="TProcessor"/> instance if successful; otherwise, <c>null</c>.</param>
         /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
-        public bool TryGet<TProcessor>(out TProcessor? result) where TProcessor : IRteHtmlProcessor {
-            if (_lookup.TryGetValue(typeof(TProcessor).AssemblyQualifiedName!, out IRteHtmlProcessor? importer)) {
+        public bool TryGet<TProcessor>(out TProcessor result) where TProcessor : IRteHtmlProcessor {
+            if (_lookup.TryGetValue(typeof(TProcessor).AssemblyQualifiedName!, out IRteHtmlProcessor importer)) {
                 result = (TProcessor) importer;
                 return true;
             }
@@ -49,7 +49,7 @@ namespace Limbo.Umbraco.Rte.Processors {
         /// <param name="typeName">The name of the type.</param>
         /// <param name="result">When this method returns, holds the <see cref="IRteHtmlProcessor"/> instance if successful; otherwise, <c>null</c>.</param>
         /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
-        public bool TryGet(string typeName, out IRteHtmlProcessor? result) {
+        public bool TryGet(string typeName, out IRteHtmlProcessor result) {
             return _lookup.TryGetValue(typeName, out result);
         }
 

@@ -47,11 +47,11 @@ namespace Limbo.Umbraco.Rte.PropertyEditors {
             // to be cached at the published snapshot level, because we have no idea what the macros may depend on actually.
             PropertyCacheLevel.Snapshot;
 
-        public override object ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
+        public override object ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object inter, bool preview) {
 
-            RteConfiguration? config = propertyType.DataType.ConfigurationAs<RteConfiguration>();
+            RteConfiguration config = propertyType.DataType.ConfigurationAs<RteConfiguration>();
 
-            string? converted = Convert(owner, propertyType, inter, preview, config);
+            string converted = Convert(owner, propertyType, inter, preview, config);
             return new HtmlEncodedString(converted ?? string.Empty);
         }
 
@@ -83,7 +83,7 @@ namespace Limbo.Umbraco.Rte.PropertyEditors {
             }
         }
 
-        private string? Convert(IPublishedElement owner, IPublishedPropertyType propertyType, object? source, bool preview, RteConfiguration? config) {
+        private string Convert(IPublishedElement owner, IPublishedPropertyType propertyType, object source, bool preview, RteConfiguration config) {
             if (source == null) {
                 return null;
             }
@@ -94,7 +94,7 @@ namespace Limbo.Umbraco.Rte.PropertyEditors {
                 foreach (JToken token in processorReferences) {
                     if (token.Type != JTokenType.String) continue;
                     string typeName = token.Value<string>()!;
-                    if (_processors.TryGet(typeName, out IRteHtmlProcessor? processor)) {
+                    if (_processors.TryGet(typeName, out IRteHtmlProcessor processor)) {
                         processors.Add(processor!);
                     } else {
                         // TODO: Log error as processor was not found
@@ -125,11 +125,11 @@ namespace Limbo.Umbraco.Rte.PropertyEditors {
 
             if (doc.ParseErrors.Any() == false && doc.DocumentNode != null) {
                 // Find all images with rel attribute
-                HtmlNodeCollection? imgNodes = doc.DocumentNode.SelectNodes("//img[@rel]");
+                HtmlNodeCollection imgNodes = doc.DocumentNode.SelectNodes("//img[@rel]");
 
                 var modified = false;
                 if (imgNodes != null) {
-                    foreach (HtmlNode? img in imgNodes) {
+                    foreach (HtmlNode img in imgNodes) {
                         var nodeId = img.GetAttributeValue("rel", string.Empty);
                         if (int.TryParse(nodeId, NumberStyles.Integer, CultureInfo.InvariantCulture, out _)) {
                             img.Attributes.Remove("rel");
@@ -139,9 +139,9 @@ namespace Limbo.Umbraco.Rte.PropertyEditors {
                 }
 
                 // Find all a and img tags with a data-udi attribute
-                HtmlNodeCollection? dataUdiNodes = doc.DocumentNode.SelectNodes("(//a|//img)[@data-udi]");
+                HtmlNodeCollection dataUdiNodes = doc.DocumentNode.SelectNodes("(//a|//img)[@data-udi]");
                 if (dataUdiNodes != null) {
-                    foreach (HtmlNode? node in dataUdiNodes) {
+                    foreach (HtmlNode node in dataUdiNodes) {
                         node.Attributes.Remove("data-udi");
                         modified = true;
                     }
