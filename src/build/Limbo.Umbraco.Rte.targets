@@ -1,0 +1,26 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <LimboUmbracoRteContentFilesPath>$(MSBuildThisFileDirectory)..\content\App_Plugins\Limbo.Umbraco.Rte\**\*.*</LimboUmbracoRteContentFilesPath>
+  </PropertyGroup>
+
+  <Target Name="CopyLimboUmbracoRteAssets" BeforeTargets="Build">
+    <ItemGroup>
+      <LimboUmbracoRteContentFiles Include="$(LimboUmbracoRteContentFilesPath)" />
+    </ItemGroup>
+    <Message Text="Copying Limbo.Umbraco.Rte files: $(LimboUmbracoRteContentFilesPath) - #@(LimboUmbracoRteContentFiles->Count()) files"  Importance="high" />
+    <Copy
+      SourceFiles="@(LimboUmbracoRteContentFiles)"
+      DestinationFiles="@(LimboUmbracoRteContentFiles->'$(MSBuildProjectDirectory)\App_Plugins\Limbo.Umbraco.Rte\%(RecursiveDir)%(Filename)%(Extension)')"
+      SkipUnchangedFiles="true" />
+  </Target>
+
+  <Target Name="ClearLimboUmbracoRteAssets" BeforeTargets="Clean">
+    <ItemGroup>
+      <LimboUmbracoRteDir Include="$(MSBuildProjectDirectory)\App_Plugins\Limbo.Umbraco.Rte\" />
+    </ItemGroup>
+    <Message Text="Clear old Limbo.Umbraco.Rte files"  Importance="high" />
+    <RemoveDir Directories="@(LimboUmbracoRteDir)"  />
+  </Target>
+
+</Project>

@@ -45,6 +45,11 @@
     <Content Include="App_Plugins\Limbo.Umbraco.Rte\Lang\*.xml" />
   </ItemGroup>
 
+  <!-- Include the targets file -->
+  <ItemGroup>
+    <Content Include="../build/$(AssemblyName).targets" PackagePath="build\$(AssemblyName).targets" />
+  </ItemGroup>
+
   <!-- Include package icon for NuGet -->
   <ItemGroup>
     <Content Include="../build/Limbo.png" Pack="true" PackagePath="\" />
