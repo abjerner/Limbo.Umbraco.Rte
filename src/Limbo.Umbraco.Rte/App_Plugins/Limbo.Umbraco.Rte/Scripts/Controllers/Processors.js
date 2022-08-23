@@ -12,7 +12,6 @@
         zIndex: 6000,
         disabled: false,
         containment: "parent",
-        //placeholder: "linkpicker-sortable-placeholder",
         stop: function () {
             sync();
         }
@@ -20,7 +19,7 @@
 
     function hi(x) {
         return {
-            type: x.type,
+            alias: x.type,
             name: x.name,
             description: x.description,
             icon: x.icon ?? "icon-binarycode"
@@ -74,15 +73,15 @@
 
             if (!Array.isArray($scope.model.value) || $scope.model.length === 0) return;
 
-            $scope.model.value.forEach(function (type) {
+            $scope.model.value.forEach(function (alias) {
 
-                const p = vm.availableProcessors.find(x => x.type === type);
+                const p = vm.availableProcessors.find(x => x.alias === alias);
 
                 if (p) {
                     vm.selectedProcessors.push(p);
                 } else {
                     vm.selectedProcessors.push({
-                        type: type,
+                        alias: alias,
                         name: "Processor not found",
                         description: "",
                         icon: "icon-binarycode color-grey"
