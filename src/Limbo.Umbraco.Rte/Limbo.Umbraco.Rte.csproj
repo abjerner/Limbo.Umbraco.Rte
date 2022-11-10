@@ -51,9 +51,6 @@
   <ItemGroup>
     <Content Include="../build/Limbo.png" Pack="true" PackagePath="\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="wwwroot\Views\" />
-  </ItemGroup>
 
   <!-- Generate XML documentation -->
   <PropertyGroup>

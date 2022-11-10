@@ -13,10 +13,7 @@ namespace Limbo.Umbraco.Rte.Manifests {
                 BundleOptions = BundleOptions.Independent,
                 Scripts = new[] {
                     $"/App_Plugins/{RtePackage.Alias}/Scripts/Controllers/Processors.js"
-                },
-                //Stylesheets = new[] {
-                //    $"/App_Plugins/{RtePackage.Alias}/Styles/Default.css"
-                //}
+                }
             });
         }
 
