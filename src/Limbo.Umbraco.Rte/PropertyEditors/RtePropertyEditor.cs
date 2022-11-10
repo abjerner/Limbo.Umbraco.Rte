@@ -12,13 +12,13 @@ namespace Limbo.Umbraco.Rte.PropertyEditors {
     [DataEditor(EditorAlias, EditorType.PropertyValue, "Limbo RTE", EditorView, ValueType = ValueTypes.Text, Group = "Limbo", Icon = EditorIcon)]
     public class RtePropertyEditor : RichTextPropertyEditor {
 
-        internal const string EditorAlias = "Limbo.Umbraco.Rte";
+        public const string EditorAlias = "Limbo.Umbraco.Rte";
 
-        internal const string EditorName = "Limbo RTE";
+        public const string EditorName = "Limbo RTE";
 
-        internal const string EditorIcon = "icon-browser-window color-limbo";
+        public const string EditorIcon = "icon-browser-window color-limbo";
 
-        internal const string EditorView = "rte";
+        public const string EditorView = "rte";
 
         private readonly IIOHelper _ioHelper;
 
