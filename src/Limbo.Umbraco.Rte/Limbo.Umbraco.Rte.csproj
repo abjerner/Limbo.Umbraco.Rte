@@ -22,7 +22,7 @@
   <!-- Information for the NuGet package -->
   <PropertyGroup>
     <PackageId>Limbo.Umbraco.Rte</PackageId>
-    <PackageTags>Limbo. Umbraco, RTE</PackageTags>
+    <PackageTags>Limbo, Skybrud, Umbraco, RTE, Umbraco-Marketplace</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/abjerner/Limbo.Umbraco.Rte</PackageProjectUrl>
     <PackageIcon>Limbo.png</PackageIcon>
