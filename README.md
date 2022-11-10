@@ -9,16 +9,16 @@
 
 ## Installation
 
-The Umbraco 10 version of this package is only available via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.Rte/2.0.0-alpha001). To install the package, you can use either .NET CLI:
+The Umbraco 10 version of this package is only available via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.Rte/2.0.0). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.Rte --version 2.0.0-alpha001
+dotnet add package Limbo.Umbraco.Rte --version 2.0.0
 ```
 
 or the older NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.Rte -Version 2.0.0-alpha001
+Install-Package Limbo.Umbraco.Rte -Version 2.0.0
 ```
 
 **Umbraco 9**  
