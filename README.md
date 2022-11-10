@@ -9,7 +9,20 @@
 
 ## Installation
 
-Will be on NuGet soon :wink:
+The Umbraco 9 version of this package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.Rte/1.0.0). To install the package, you can use either .NET CLI:
+
+```
+dotnet add package Limbo.Umbraco.Rte --version 1.0.0
+```
+
+or the older NuGet Package Manager:
+
+```
+Install-Package Limbo.Umbraco.Rte -Version 1.0.0
+```
+
+**Umbraco 10**  
+For the Umbraco 10 version of this package, see the [**v2/main**](https://github.com/abjerner/Limbo.Umbraco.Rte/tree/v2/main) branch instead.
 
 
 
