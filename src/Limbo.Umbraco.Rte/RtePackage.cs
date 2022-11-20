@@ -42,7 +42,7 @@ namespace Limbo.Umbraco.Rte {
         /// <summary>
         /// Gets the URL of the documentation for this package.
         /// </summary>
-        public const string DocumentationUrl = "https://github.com/abjerner/Limbo.Umbraco.Rte";
+        public const string DocumentationUrl = "https://packages.limbo.works/d96979df";
 
     }
 
