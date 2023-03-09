@@ -21,7 +21,7 @@ namespace Limbo.Umbraco.Rte.Processors {
 
             RecursiveFtw(document.DocumentNode, ref modified);
 
-            return false;
+            return modified;
 
         }
 
