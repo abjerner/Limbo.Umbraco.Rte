@@ -24,12 +24,14 @@ namespace Limbo.Umbraco.Rte.Processors {
 
                 string? href = a.GetAttributeValue("href", null);
                 string? target = a.GetAttributeValue("target", null);
+                string? rel = a.GetAttributeValue("rel", null);
 
                 if (string.IsNullOrWhiteSpace(href)) continue;
                 if (href.StartsWith("/")) continue;
                 if (!string.IsNullOrWhiteSpace(target)) continue;
 
                 a.SetAttributeValue("target", "_blank");
+                if (string.IsNullOrWhiteSpace(rel)) a.SetAttributeValue("rel", "noopener");
                 modified = true;
 
             }
