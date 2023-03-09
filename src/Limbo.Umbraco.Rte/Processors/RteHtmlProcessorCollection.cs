@@ -20,7 +20,7 @@ namespace Limbo.Umbraco.Rte.Processors {
             _lookup = new Dictionary<string, IRteHtmlProcessor>(StringComparer.OrdinalIgnoreCase);
 
             foreach (IRteHtmlProcessor item in this) {
-                string? typeName = item.GetType().AssemblyQualifiedName;
+                string? typeName = RteUtils.GetTypeName(item.GetType());
                 if (typeName != null && _lookup.ContainsKey(typeName) == false) {
                     _lookup.Add(typeName, item);
                 }
@@ -35,12 +35,22 @@ namespace Limbo.Umbraco.Rte.Processors {
         /// <param name="result">When this method returns, holds the <typeparamref name="TProcessor"/> instance if successful; otherwise, <c>null</c>.</param>
         /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
         public bool TryGet<TProcessor>(out TProcessor? result) where TProcessor : IRteHtmlProcessor {
-            if (_lookup.TryGetValue(typeof(TProcessor).AssemblyQualifiedName!, out IRteHtmlProcessor? importer)) {
+
+            string? name = RteUtils.GetTypeName(typeof(TProcessor));
+
+            if (string.IsNullOrWhiteSpace(name)) {
+                result = default;
+                return false;
+            }
+
+            if (_lookup.TryGetValue(name, out IRteHtmlProcessor? importer)) {
                 result = (TProcessor) importer;
                 return true;
             }
+
             result = default;
             return false;
+
         }
 
         /// <summary>
@@ -50,7 +60,7 @@ namespace Limbo.Umbraco.Rte.Processors {
         /// <param name="result">When this method returns, holds the <see cref="IRteHtmlProcessor"/> instance if successful; otherwise, <c>null</c>.</param>
         /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
         public bool TryGet(string typeName, out IRteHtmlProcessor? result) {
-            return _lookup.TryGetValue(typeName, out result);
+            return _lookup.TryGetValue(RteUtils.GetTypeName(typeName), out result);
         }
 
     }

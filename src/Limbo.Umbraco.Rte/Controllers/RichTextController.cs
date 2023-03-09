@@ -19,7 +19,7 @@ namespace Limbo.Umbraco.Rte.Controllers {
 
         public object GetProcessors() {
             return _processors.Select(x => new JObject {
-                { "type", x.GetType().AssemblyQualifiedName },
+                { "type", RteUtils.GetTypeName(x.GetType()) },
                 { "name", x.Name },
                 { "icon", x.Icon },
                 { "description", x.Description }

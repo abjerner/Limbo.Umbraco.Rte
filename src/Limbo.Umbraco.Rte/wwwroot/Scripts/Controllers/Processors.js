@@ -75,6 +75,10 @@
 
             $scope.model.value.forEach(function (alias) {
 
+                // Earlier versions checked the type's assembly qualified name, which unfortutanely also contains the
+                // version number, which resulted in the saved processors getting when upgrading
+                alias = alias.split(",").slice(0, 2).join(",");
+
                 const p = vm.availableProcessors.find(x => x.alias === alias);
 
                 if (p) {
