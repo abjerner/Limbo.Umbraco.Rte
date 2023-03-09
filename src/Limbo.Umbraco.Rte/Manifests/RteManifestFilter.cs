@@ -9,7 +9,9 @@ namespace Limbo.Umbraco.Rte.Manifests {
         /// <inheritdoc />
         public void Filter(List<PackageManifest> manifests) {
             manifests.Add(new PackageManifest {
-                PackageName = RtePackage.Alias.Replace(".", "-").ToLowerInvariant(),
+                AllowPackageTelemetry = true,
+                PackageName = RtePackage.Name,
+                Version = RtePackage.InformationalVersion,
                 BundleOptions = BundleOptions.Independent,
                 Scripts = new[] {
                     $"/App_Plugins/{RtePackage.Alias}/Scripts/Controllers/Processors.js"

@@ -25,9 +25,14 @@ namespace Limbo.Umbraco.Rte {
         public static readonly Version Version = typeof(RtePackage).Assembly.GetName().Version!;
 
         /// <summary>
+        /// Gets the informational version of the package.
+        /// </summary>
+        public static readonly string InformationalVersion = FileVersionInfo.GetVersionInfo(typeof(RtePackage).Assembly.Location).ProductVersion!;
+
+        /// <summary>
         /// Gets the semantic version of the package.
         /// </summary>
-        public static readonly SemVersion SemVersion = FileVersionInfo.GetVersionInfo(typeof(RtePackage).Assembly.Location).ProductVersion!;
+        public static readonly SemVersion SemVersion = InformationalVersion;
 
         /// <summary>
         /// Gets the URL of the GitHub repository for this package.
@@ -40,9 +45,14 @@ namespace Limbo.Umbraco.Rte {
         public const string IssuesUrl = "https://github.com/abjerner/Limbo.Umbraco.Rte/issues";
 
         /// <summary>
+        /// Gets the website URL of the package.
+        /// </summary>
+        public const string WebsiteUrl = "https://packages.limbo.works/limbo.umbraco.rte/v2/";
+
+        /// <summary>
         /// Gets the URL of the documentation for this package.
         /// </summary>
-        public const string DocumentationUrl = "https://packages.limbo.works/60f243f3";
+        public const string DocumentationUrl = "https://packages.limbo.works/limbo.umbraco.rte/v2/docs/";
 
     }
 
