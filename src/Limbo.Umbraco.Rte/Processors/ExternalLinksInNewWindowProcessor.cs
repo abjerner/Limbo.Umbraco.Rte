@@ -15,9 +15,12 @@ namespace Limbo.Umbraco.Rte.Processors {
 
         public bool PostProcess(IPublishedElement owner, IPublishedPropertyType propertyType, bool preview, HtmlDocument document) {
 
+            HtmlNodeCollection? nodes = document.DocumentNode.SelectNodes("//a");
+            if (nodes is null) return false;
+
             bool modified = false;
 
-            foreach (HtmlNode a in document.DocumentNode.SelectNodes("//a")) {
+            foreach (HtmlNode a in nodes) {
 
                 string? href = a.GetAttributeValue("href", null);
                 string? target = a.GetAttributeValue("target", null);
