@@ -1,0 +1,5 @@
+﻿﻿<div class="limbo-rte-value-type" ng-controller="Limbo.Umbraco.Rte.ValueTypeController as vm">
+    <div>
+        <div ng-repeat="valueType in vm.valueTypes" ng-click="vm.select(valueType)" ng-class="{'--active': valueType.selected}">{{valueType.name}}</div>
+    </div>
+</div>

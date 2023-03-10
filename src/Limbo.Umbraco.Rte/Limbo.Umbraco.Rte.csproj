@@ -52,6 +52,7 @@
   <ItemGroup>
     <Content Include="../build/Limbo.png" Pack="true" PackagePath="\" />
     <None Include="..\..\NUGET.md" Pack="true" PackagePath="\" />
+    <None Include="wwwroot\Styles\Styles.less" />
   </ItemGroup>
 
   <!-- Generate XML documentation -->

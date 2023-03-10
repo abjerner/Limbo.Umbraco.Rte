@@ -1,4 +1,4 @@
-﻿angular.module("umbraco").controller("Limbo.Umbraco.Redirects.ProcessorsController", function ($scope, $http, editorService) {
+﻿angular.module("umbraco").controller("Limbo.Umbraco.Rte.ProcessorsController", function ($scope, $http, editorService) {
 
     const vm = this;
 

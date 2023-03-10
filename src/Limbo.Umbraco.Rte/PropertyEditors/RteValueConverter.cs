@@ -1,10 +1,14 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using HtmlAgilityPack;
 using J2N.Collections.Generic;
+using Limbo.Umbraco.Rte.Models;
 using Limbo.Umbraco.Rte.Processors;
+using Microsoft.AspNetCore.Html;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Enums;
 using Umbraco.Cms.Core.Macros;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PropertyEditors;
@@ -16,6 +20,7 @@ using Umbraco.Cms.Infrastructure.Macros;
 using Umbraco.Extensions;
 
 #pragma warning disable CS1591
+#pragma warning disable CS8764
 
 namespace Limbo.Umbraco.Rte.PropertyEditors {
 
@@ -47,12 +52,37 @@ namespace Limbo.Umbraco.Rte.PropertyEditors {
             // to be cached at the published snapshot level, because we have no idea what the macros may depend on actually.
             PropertyCacheLevel.Snapshot;
 
-        public override object ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
+        public override Type GetPropertyValueType(IPublishedPropertyType propertyType) {
+
+            RteConfiguration? config = propertyType.DataType.ConfigurationAs<RteConfiguration>();
+
+            var valueType = EnumUtils.ParseEnum(config?.ValueType, RteValueType.EncodedString);
+
+            return valueType switch {
+                RteValueType.HtmlContent => typeof(IHtmlContent),
+                RteValueType.String => typeof(string),
+                _ => typeof(IHtmlEncodedString)
+            };
+
+        }
+
+        public override object? ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
 
             RteConfiguration? config = propertyType.DataType.ConfigurationAs<RteConfiguration>();
 
             string? converted = Convert(owner, propertyType, inter, preview, config);
-            return new HtmlEncodedString(converted ?? string.Empty);
+
+            var valueType = EnumUtils.ParseEnum(config?.ValueType, RteValueType.EncodedString);
+
+            if (config is not null && config.IsNullable && string.IsNullOrWhiteSpace(converted)) return null;
+
+            return valueType switch {
+                RteValueType.EncodedString => new HtmlEncodedString(converted ?? string.Empty),
+                RteValueType.HtmlContent => new HtmlString(converted ?? string.Empty),
+                RteValueType.String => converted ?? string.Empty,
+                _ => new HtmlEncodedString(converted ?? string.Empty)
+            };
+
         }
 
         // NOT thread-safe over a request because it modifies the
