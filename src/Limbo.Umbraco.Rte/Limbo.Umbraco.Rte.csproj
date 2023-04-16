@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <VersionPrefix>2.0.0</VersionPrefix>
+    <VersionPrefix>2.0.1</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Company>Limbo</Company>
     <Authors>Anders Bjerner</Authors>
@@ -46,6 +46,8 @@
     <Content Include="wwwroot\**\*.html" />
     <Content Include="wwwroot\**\*.js" />
     <Content Include="wwwroot\Lang\*.xml" />
+    <Content Remove="compilerconfig.json" />
+    <None Include="compilerconfig.json" />
   </ItemGroup>
 
   <!-- Include package icon and README for the NuGet -->
