@@ -1,4 +1,6 @@
-# Limbo RTE [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md) [![NuGet](https://img.shields.io/nuget/vpre/Limbo.Umbraco.Rte.svg)](https://www.nuget.org/packages/Limbo.Umbraco.Rte) [![NuGet](https://img.shields.io/nuget/dt/Limbo.Umbraco.Rte.svg)](https://www.nuget.org/packages/Limbo.Umbraco.Rte) [![Our Umbraco](https://img.shields.io/badge/our-umbraco-%233544B1)](https://our.umbraco.com/packages/backoffice-extensions/limbo-rte/)
+# Limbo RTE
+
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md) [![NuGet](https://img.shields.io/nuget/vpre/Limbo.Umbraco.Rte.svg)](https://www.nuget.org/packages/Limbo.Umbraco.Rte) [![NuGet](https://img.shields.io/nuget/dt/Limbo.Umbraco.Rte.svg)](https://www.nuget.org/packages/Limbo.Umbraco.Rte) [![Our Umbraco](https://img.shields.io/badge/our-umbraco-%233544B1)](https://our.umbraco.com/packages/backoffice-extensions/limbo-rte/)
 
 **Limbo.Umbraco.Rte** is small package that brings extended functionality to Umbraco's build-in rich text editor (TinyMCE). The package does so by adding a new **Limbo RTE** property editor, which enables developers to select a number of *processors*, that may modify the HTML - eg. to ensure that external links always open in a new window/tab.
 
